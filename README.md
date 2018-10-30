@@ -63,6 +63,7 @@
 | 字段id | 字段名称 | 类型 | 含义 |
 | ------ | ------ | ------ | ------ |
 | uid | 用户ID | bigint | |
+| moi_id | 出行编号 | int | |
 | move_id | 中心点纬度 | 用于与wgs84表换算 |
 | stime | 出行开始时间 | 用于与wgs84表换算 |
 | etime | 出行结束时间 | bigint | |
@@ -77,3 +78,46 @@
 | start_zone | 起点所属区县 | string | |
 | start_ptype | 起点驻留类型 | int | <font color=#00ffff>（待确定）</font> |
 | end_ptype | 终点驻留类型 | int | <font color=#00ffff>（待确定）</font> |
+
+**move_rn出现关联道路节点**
+
+| 字段id | 字段名称 | 类型 | 含义 |
+| ------ | ------ | ------ | ------ |
+| uid | 用户ID | bigint | |
+| moi_id | 出行编号 | int | |
+| route_id | 路径标识 | | <font color=#00ffff>（待确定）</font> |
+| rn_seq | 路径节点编号 | bigint | 路径节点编号 |
+| time | 经过节点对的时间 | int | 1-公路2-铁路3-飞机4-地铁0-其他 |
+| is_end | 是否为终点 | string |  |
+| mode | 交通方式 | smallint |  |
+| is_high | 是否重要道路节点 | string | |
+| next_rn_id | 下一个路径节点编号 | bigint | |
+
+**user_attribute用户属性表**
+
+| 字段id | 字段名称 | 类型 | 含义 |
+| ------ | ------ | ------ | ------ |
+| uid | 用户ID | bigint | |
+| gender | 性别 | string | |
+| age | 年龄 | string | 01：0-6 02：7-12 03：13-15 04：16-18 05：19-24 06：25-29 07：30-34 08：35-39 ..|
+| arpu | 月通信费 | double | |
+| area | 归属地 | string | V0310000-上海V0440100-广州V0110000-北京V0440300-深圳 |
+| brand | 品牌 | string |  |
+| type | 手机型号 | string |  |
+| weight | 权重 | double | <font color=#00ffff>（待确定）</font> |
+| gw | 性别权重 | double | <font color=#00ffff>（待确定）</font> |
+
+**user_label_info用户上网标签表**
+
+| 字段id | 字段名称 | 类型 | 含义 |
+| ------ | ------ | ------ | ------ |
+| uid | 用户ID | bigint | |
+| lcode | 标签编码 | string | 含义见label_codes |
+| ltime | 时长 | bigint | |
+| lflux | 流量 | bigint | |
+| province | 省份 | string | 011 |
+
+**label_codes上网标签码表**
+***流量具体干了什么***
+**area_code地区编码表**
+area_id:V0110000北京 zone_id:110108海淀区
