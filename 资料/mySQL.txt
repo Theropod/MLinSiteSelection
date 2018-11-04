@@ -1,0 +1,156 @@
+drop table if exists JFS_core_number;
+create table JFS_core_number
+row format delimited fields terminated by ',' Lines terminated by '\n' null defined as '' stored as textfile
+as
+select a01.uid, a01.final_grid_id 
+from openlab.stay_poi a01
+where a01.is_core = 'Y' and a01.city = 'V0110000';
+#############################################################################################################
+drop table if exists JFS_ptype_1_number;
+create table JFS_ptype_1_number
+row format delimited fields terminated by ',' Lines terminated by '\n' null defined as '' stored as textfile
+as
+select a02.uid, a02.final_grid_id
+from openlab.stay_poi a02
+where a02.ptype = 1 and a02.city = 'V0110000';
+#############################################################################################################
+drop table if exists JFS_ptype_0_number;
+create table JFS_ptype_0_number
+row format delimited fields terminated by ',' Lines terminated by '\n' null defined as '' stored as textfile
+as
+select a02.uid, a02.final_grid_id
+from openlab.stay_poi a02
+where a02.ptype = 0 and a02.city = 'V0110000';
+#############################################################################################################
+drop table if exists JFS_ptype_2_number;
+create table JFS_ptype_2_number
+row format delimited fields terminated by ',' Lines terminated by '\n' null defined as '' stored as textfile
+as
+select a02.uid, a02.final_grid_id
+from openlab.stay_poi a02
+where a02.ptype = 2 and a02.city = 'V0110000';
+############################################################################################################
+drop table if exists JFS_weekday_day_time_ptype_0_total;
+create table JFS_weekday_day_time_ptype_0_total
+row format delimited fields terminated by ',' Lines terminated by '\n' null defined as '' stored as textfile
+as
+select a02.uid, a02.final_grid_id, a02.weekday_day_time
+from openlab.stay_poi a02
+where a02.ptype = 0 and a02.city = 'V0110000';
+#############################################################################################################
+drop table if exists JFS_weekday_day_time_ptype_1_total;
+create table JFS_weekday_day_time_ptype_1_total
+row format delimited fields terminated by ',' Lines terminated by '\n' null defined as '' stored as textfile
+as
+select a02.uid, a02.final_grid_id, a02.weekday_day_time
+from openlab.stay_poi a02
+where a02.ptype = 1 and a02.city = 'V0110000';
+#############################################################################################################
+drop table if exists JFS_weekday_day_time_ptype_2_total;
+create table JFS_weekday_day_time_ptype_2_total
+row format delimited fields terminated by ',' Lines terminated by '\n' null defined as '' stored as textfile
+as
+select a02.uid, a02.final_grid_id, a02.weekday_day_time
+from openlab.stay_poi a02
+where a02.ptype = 2 and a02.city = 'V0110000';
+#############################################################################################################
+drop table if exists JFS_weekday_eve_time_ptype_0_total;
+create table JFS_weekday_eve_time_ptype_0_total
+row format delimited fields terminated by ',' Lines terminated by '\n' null defined as '' stored as textfile
+as
+select a02.uid, a02.final_grid_id, a02.weekday_eve_time
+from openlab.stay_poi a02
+where a02.ptype = 0 and a02.city = 'V0110000';
+#############################################################################################################
+drop table if exists JFS_weekday_eve_time_ptype_1_total;
+create table JFS_weekday_eve_time_ptype_1_total
+row format delimited fields terminated by ',' Lines terminated by '\n' null defined as '' stored as textfile
+as
+select a02.uid, a02.final_grid_id, a02.weekday_eve_time
+from openlab.stay_poi a02
+where a02.ptype = 1 and a02.city = 'V0110000';
+#############################################################################################################
+drop table if exists JFS_weekday_eve_time_ptype_2_total;
+create table JFS_weekday_eve_time_ptype_2_total
+row format delimited fields terminated by ',' Lines terminated by '\n' null defined as '' stored as textfile
+as
+select a02.uid, a02.final_grid_id, a02.weekday_eve_time
+from openlab.stay_poi a02
+where a02.ptype = 2 and a02.city = 'V0110000';
+############################################################################################################
+drop table if exists jfs_weekday_day_time_ptype_0_total_summary;
+create table jfs_weekday_day_time_ptype_0_total_summary
+row format delimited fields terminated by ',' Lines terminated by '\n' null defined as '' stored as textfile
+as
+SELECT uid, final_grid_id, weekday_day_time,
+SUM(weekday_day_time) OVER (PARTITION BY final_grid_id ORDER BY final_grid_id ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING)
+FROM jfs_weekday_day_time_ptype_0_total;
+###########################################################################################################
+drop table if exists jfs_weekday_day_time_ptype_1_total_summary;
+create table jfs_weekday_day_time_ptype_1_total_summary
+row format delimited fields terminated by ',' Lines terminated by '\n' null defined as '' stored as textfile
+as
+SELECT uid, final_grid_id, weekday_day_time,
+SUM(weekday_day_time) OVER (PARTITION BY final_grid_id ORDER BY final_grid_id ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING)
+FROM jfs_weekday_day_time_ptype_1_total;
+############################################################################################################
+drop table if exists jfs_weekday_day_time_ptype_2_total_summary;
+create table jfs_weekday_day_time_ptype_2_total_summary
+row format delimited fields terminated by ',' Lines terminated by '\n' null defined as '' stored as textfile
+as
+SELECT uid, final_grid_id, weekday_day_time,
+SUM(weekday_day_time) OVER (PARTITION BY final_grid_id ORDER BY final_grid_id ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING)
+FROM jfs_weekday_day_time_ptype_2_total;
+############################################################################################################
+drop table if exists jfs_weekday_eve_time_ptype_0_total_summary;
+create table jfs_weekday_eve_time_ptype_0_total_summary
+row format delimited fields terminated by ',' Lines terminated by '\n' null defined as '' stored as textfile
+as
+SELECT uid, final_grid_id, weekday_eve_time,
+SUM(weekday_eve_time) OVER (PARTITION BY final_grid_id ORDER BY final_grid_id ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING)
+FROM jfs_weekday_eve_time_ptype_0_total;
+############################################################################################################
+drop table if exists jfs_weekday_eve_time_ptype_1_total_summary;
+create table jfs_weekday_eve_time_ptype_1_total_summary
+row format delimited fields terminated by ',' Lines terminated by '\n' null defined as '' stored as textfile
+as
+SELECT uid, final_grid_id, weekday_eve_time,
+SUM(weekday_eve_time) OVER (PARTITION BY final_grid_id ORDER BY final_grid_id ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING)
+FROM jfs_weekday_eve_time_ptype_1_total;
+###############################################################################################################
+drop table if exists jfs_weekday_eve_time_ptype_2_total_summary;
+create table jfs_weekday_eve_time_ptype_2_total_summary
+row format delimited fields terminated by ',' Lines terminated by '\n' null defined as '' stored as textfile
+as
+SELECT uid, final_grid_id, weekday_eve_time,
+SUM(weekday_eve_time) OVER (PARTITION BY final_grid_id ORDER BY final_grid_id ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING)
+FROM jfs_weekday_eve_time_ptype_2_total;
+############################################################################################################
+drop table if exists jfs_ptype_0_number_summary;
+create table jfs_ptype_0_number_summary
+row format delimited fields terminated by ',' Lines terminated by '\n' null defined as '' stored as textfile
+as
+SELECT final_grid_id, count(*)
+FROM jfs_ptype_0_number group by final_grid_id;
+############################################################################################################
+drop table if exists jfs_ptype_1_number_summary;
+create table jfs_ptype_1_number_summary
+row format delimited fields terminated by ',' Lines terminated by '\n' null defined as '' stored as textfile
+as
+SELECT final_grid_id, count(*)
+FROM jfs_ptype_1_number group by final_grid_id;
+#################################################################################################################
+drop table if exists jfs_ptype_2_number_summary;
+create table jfs_ptype_2_number_summary
+row format delimited fields terminated by ',' Lines terminated by '\n' null defined as '' stored as textfile
+as
+SELECT final_grid_id, count(*)
+FROM jfs_ptype_2_number group by final_grid_id;
+#############################################################################################################
+drop table if exists jfs_core_number_summary;
+create table jfs_core_number_summary
+row format delimited fields terminated by ',' Lines terminated by '\n' null defined as '' stored as textfile
+as
+SELECT uid, final_grid_id, count(*)
+FROM jfs_core_number group by final_grid_id, uid;
+
