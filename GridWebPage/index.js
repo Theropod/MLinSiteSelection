@@ -41,7 +41,7 @@ var subLayerParent = L.markerClusterGroup();
 var gridLayer = L.featureGroup.subGroup(subLayerParent);
 
 var rawGridLayer = omnivore.topojson(
-	"/data/csv2geojson/ss_grid_beijing_wgs84_merged.topo.json"
+	"./data/csv2geojson/ss_grid_beijing_wgs84_merged.topo.json"
 );
 // Need Progress Bar or disable user interaction when zooming to level 9 and 10
 rawGridLayer.on("ready", function() {
@@ -121,7 +121,7 @@ var unicomLayerSytle = L.geoJson(null, {
 });
 var unicomLayer = omnivore
 	.geojson(
-		"/data/csv2geojson/bj_unicom_businesshall.geojson",
+		"./data/csv2geojson/bj_unicom_businesshall.geojson",
 		null,
 		unicomLayerSytle
 	)
@@ -157,7 +157,7 @@ var pointStores = [];
 );
 
 var clusterPromises = pointStores.map(function(pointStore) {
-	return fetch("/data/csv2geojson/" + pointStore.LayerName + ".geojson")
+	return fetch("./data/csv2geojson/" + pointStore.LayerName + ".geojson")
 		.then(function(response) {
 			return response.json();
 		})
