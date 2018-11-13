@@ -1,0 +1,151 @@
+{\rtf1\ansi\ansicpg936\cocoartf1671
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset134 PingFangSC-Regular;\f2\fnil\fcharset0 Menlo-Regular;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red0\green0\blue0;\red70\green137\blue204;
+\red202\green202\blue202;\red212\green214\blue154;\red194\green126\blue101;\red167\green197\blue152;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\csgray\c0\c0;\cssrgb\c33725\c61176\c83922;
+\cssrgb\c83137\c83137\c83137;\cssrgb\c86275\c86275\c66667;\cssrgb\c80784\c56863\c47059;\cssrgb\c70980\c80784\c65882;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf2 \cb3 live_stay_fre  
+\f1 \'cd\'f8\'b8\'f1\'a1\'be\'be\'d3\'d7\'a1\'a1\'bf\'d3\'c3\'bb\'a7\'c3\'bf\'d4\'c2\'d7\'a4\'c1\'f4\'c6\'b5\'b4\'ce
+\f0 \
+live_weekend_day_time  
+\f1 \'cd\'f8\'b8\'f1\'a1\'be\'be\'d3\'d7\'a1\'a1\'bf\'d3\'c3\'bb\'a7\'d6\'dc\'c4\'a9\'b0\'d7\'cc\'ec\'d7\'a4\'c1\'f4\'d7\'dc\'ca\'b1\'bc\'e4\
+
+\f0 live_weekend_eve_time  
+\f1 \'cd\'f8\'b8\'f1\'a1\'be\'be\'d3\'d7\'a1\'a1\'bf\'d3\'c3\'bb\'a7\'d6\'dc\'c4\'a9\'cd\'ed\'c9\'cf\'d7\'a4\'c1\'f4\'d7\'dc\'ca\'b1\'bc\'e4
+\f0 \
+visit_stay_fre 
+\f1 \'cd\'f8\'b8\'f1\'a1\'be\'b5\'bd\'b7\'c3\'a1\'bf\'d3\'c3\'bb\'a7\'c3\'bf\'d4\'c2\'d7\'a4\'c1\'f4\'c6\'b5\'b4\'ce
+\f0 \
+visit_weekend_day_time 
+\f1 \'cd\'f8\'b8\'f1\'a1\'be\'b5\'bd\'b7\'c3\'a1\'bf\'d3\'c3\'bb\'a7\'d6\'dc\'c4\'a9\'b0\'d7\'cc\'ec\'d7\'a4\'c1\'f4\'d7\'dc\'ca\'b1\'bc\'e4
+\f0 \
+visit_weekend_eve_time 
+\f1 \'cd\'f8\'b8\'f1\'a1\'be\'b5\'bd\'b7\'c3\'a1\'bf\'d3\'c3\'bb\'a7\'d6\'dc\'c4\'a9\'cd\'ed\'c9\'cf\'d7\'a4\'c1\'f4\'d7\'dc\'ca\'b1\'bc\'e4
+\f0 \
+work_stay_fre 
+\f1 \'cd\'f8\'b8\'f1\'a1\'be\'b9\'a4\'d7\'f7\'a1\'bf\'d3\'c3\'bb\'a7\'c3\'bf\'d4\'c2\'d7\'a4\'c1\'f4\'c6\'b5\'b4\'ce
+\f0 \
+work_weekday_eve_time 
+\f1 \'cd\'f8\'b8\'f1\'a1\'be\'b9\'a4\'d7\'f7\'a1\'bf\'d3\'c3\'bb\'a7\'b9\'a4\'d7\'f7\'c8\'d5\'cd\'ed\'c9\'cf\'d7\'a4\'c1\'f4\'d7\'dc\'ca\'b1\'bc\'e4
+\f0 \
+work_weekend_day_time 
+\f1 \'cd\'f8\'b8\'f1\'a1\'be\'b9\'a4\'d7\'f7\'a1\'bf\'d3\'c3\'bb\'a7\'d6\'dc\'c4\'a9\'b0\'d7\'cc\'ec\'d7\'a4\'c1\'f4\'d7\'dc\'ca\'b1\'bc\'e4
+\f0 \
+work_weekend_eve_time 
+\f1 \'cd\'f8\'b8\'f1\'a1\'be\'b9\'a4\'d7\'f7\'a1\'bf\'d3\'c3\'bb\'a7\'d6\'dc\'c4\'a9\'cd\'ed\'c9\'cf\'d7\'a4\'c1\'f4\'d7\'dc\'ca\'b1\'bc\'e4\
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f2 \cf2 \expnd0\expndtw0\kerning0
+drop table if exists work_weekday_eve_time;\
+create table work_weekday_eve_time\
+row format delimited fields terminated by ',' Lines terminated by '\\n' null defined as '' stored as textfile\
+as\
+select a02.fnid,sum(a01.weekday_eve_time) sum_time,a01.date \
+from openlab.stay_poi a01 inner join openlab.ss_grid_wgs84 a02 \
+on (ceil((a01.weighted_centroid_lon - 115.42341096) /  0.0029288712627366896) =a02.gcol_4326 and ceil((a01.weighted_centroid_lat - 39.44275803) / 0.002253562647387424) =a02.grow_4326) \
+where a01.ptype = 2 and a01.city = 'V0110000'\
+group by a02.fnid,a01.date\
+\
+\
+\
+drop table if exists visit_weekend_day_time;\
+create table visit_weekend_day_time\
+row format delimited fields terminated by ',' Lines terminated by '\\n' null defined as '' stored as textfile\
+as\
+select a02.fnid,sum(a01.weekend_day_time) sum_time,a01.date \
+from openlab.stay_poi a01 inner join openlab.ss_grid_wgs84 a02 \
+on (ceil((a01.weighted_centroid_lon - 115.42341096) /  0.0029288712627366896) =a02.gcol_4326 and ceil((a01.weighted_centroid_lat - 39.44275803) / 0.002253562647387424) =a02.grow_4326) \
+where a01.ptype = 0 and a01.city = 'V0110000'\
+group by a02.fnid,a01.date\
+\
+\
+drop table if exists live_weekend_day_time;\
+create table live_weekend_day_time\
+row format delimited fields terminated by ',' Lines terminated by '\\n' null defined as '' stored as textfile\
+as\
+select a02.fnid,sum(a01.weekend_day_time) sum_time,a01.date \
+from openlab.stay_poi a01 inner join openlab.ss_grid_wgs84 a02 \
+on (ceil((a01.weighted_centroid_lon - 115.42341096) /  0.0029288712627366896) =a02.gcol_4326 and ceil((a01.weighted_centroid_lat - 39.44275803) / 0.002253562647387424) =a02.grow_4326) \
+where a01.ptype = 1 and a01.city = 'V0110000'\
+group by a02.fnid,a01.date\
+\
+\
+\
+drop table if exists work_weekend_day_time;\
+create table work_weekend_day_time\
+row format delimited fields terminated by ',' Lines terminated by '\\n' null defined as '' stored as textfile\
+as\
+select a02.fnid,sum(a01.weekend_day_time) sum_time,a01.date \
+from openlab.stay_poi a01 inner join openlab.ss_grid_wgs84 a02 \
+on (ceil((a01.weighted_centroid_lon - 115.42341096) /  0.0029288712627366896) =a02.gcol_4326 and ceil((a01.weighted_centroid_lat - 39.44275803) / 0.002253562647387424) =a02.grow_4326) \
+where a01.ptype = 2 and a01.city = 'V0110000'\
+group by a02.fnid,a01.date\
+\
+\
+drop table if exists visit_weekend_eve_time;\
+create table visit_weekend_eve_time\
+row format delimited fields terminated by ',' Lines terminated by '\\n' null defined as '' stored as textfile\
+as\
+select a02.fnid,sum(a01.weekend_eve_time) sum_time,a01.date \
+from openlab.stay_poi a01 inner join openlab.ss_grid_wgs84 a02 \
+on (ceil((a01.weighted_centroid_lon - 115.42341096) /  0.0029288712627366896) =a02.gcol_4326 and ceil((a01.weighted_centroid_lat - 39.44275803) / 0.002253562647387424) =a02.grow_4326) \
+where a01.ptype = 0 and a01.city = 'V0110000'\
+group by a02.fnid,a01.date\
+\
+\
+drop table if exists live_weekend_eve_time;\
+create table live_weekend_eve_time\
+row format delimited fields terminated by ',' Lines terminated by '\\n' null defined as '' stored as textfile\
+as\
+select a02.fnid,sum(a01.weekend_eve_time) sum_time,a01.date \
+from openlab.stay_poi a01 inner join openlab.ss_grid_wgs84 a02 \
+on (ceil((a01.weighted_centroid_lon - 115.42341096) /  0.0029288712627366896) =a02.gcol_4326 and ceil((a01.weighted_centroid_lat - 39.44275803) / 0.002253562647387424) =a02.grow_4326) \
+where a01.ptype = 1 and a01.city = 'V0110000'\
+group by a02.fnid,a01.date\
+\
+\
+drop table if exists work_weekend_eve_time;\
+create table work_weekend_eve_time\
+row format delimited fields terminated by ',' Lines terminated by '\\n' null defined as '' stored as textfile\
+as\
+select a02.fnid,sum(a01.weekend_eve_time) sum_time,a01.date \
+from openlab.stay_poi a01 inner join openlab.ss_grid_wgs84 a02 \
+on (ceil((a01.weighted_centroid_lon - 115.42341096) /  0.0029288712627366896) =a02.gcol_4326 and ceil((a01.weighted_centroid_lat - 39.44275803) / 0.002253562647387424) =a02.grow_4326) \
+where a01.ptype = 2 and a01.city = 'V0110000'\
+group by a02.fnid,a01.date\
+\
+drop table if exists visit_stay_fre;\
+create table visit_stay_fre\
+row format delimited fields terminated by ',' Lines terminated by '\\n' null defined as '' stored as textfile\
+as\
+select a02.fnid,sum(a01.stay_fre) freq, a01.date \
+from openlab.stay_poi a01 inner join openlab.ss_grid_wgs84 a02\
+on (ceil((a01.weighted_centroid_lon - 115.42341096) /  0.0029288712627366896) =a02.gcol_4326 and ceil((a01.weighted_centroid_lat - 39.44275803) / 0.002253562647387424) =a02.grow_4326) \
+where a01.ptype = 0 and a01.city = 'V0110000'\
+group by a02.fnid,a01.date\
+\
+drop table if exists live_stay_fre;\
+create table live_stay_fre\
+row format delimited fields terminated by ',' Lines terminated by '\\n' null defined as '' stored as textfile\
+as\
+select a02.fnid,sum(a01.stay_fre) freq, a01.date \
+from openlab.stay_poi a01 inner join openlab.ss_grid_wgs84 a02\
+on (ceil((a01.weighted_centroid_lon - 115.42341096) /  0.0029288712627366896) =a02.gcol_4326 and ceil((a01.weighted_centroid_lat - 39.44275803) / 0.002253562647387424) =a02.grow_4326) \
+where a01.ptype = 0 and a01.city = 'V0110000'\
+group by a02.fnid,a01.date\
+\
+drop table if exists work_stay_fre;\
+create table work_stay_fre\
+row format delimited fields terminated by ',' Lines terminated by '\\n' null defined as '' stored as textfile\
+as\
+select a02.fnid,sum(a01.stay_fre) freq, a01.date \
+from openlab.stay_poi a01 inner join openlab.ss_grid_wgs84 a02\
+on (ceil((a01.weighted_centroid_lon - 115.42341096) /  0.0029288712627366896) =a02.gcol_4326 and ceil((a01.weighted_centroid_lat - 39.44275803) / 0.002253562647387424) =a02.grow_4326) \
+where a01.ptype = 0 and a01.city = 'V0110000'\
+group by a02.fnid,a01.date\
+}
