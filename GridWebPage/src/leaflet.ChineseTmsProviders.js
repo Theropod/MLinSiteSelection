@@ -19,7 +19,7 @@ L.TileLayer.ChinaProvider = L.TileLayer.extend({
 L.TileLayer.ChinaProvider.providers = {
     TianDiTu: {
         Normal: {
-            Map: "http://t{s}.tianditu.cn/DataServer?T=vec_w&X={x}&Y={y}&L={z}",
+            Map: "https://t{s}.tianditu.cn/DataServer?T=vec_w&X={x}&Y={y}&L={z}",
             Annotion: "http://t{s}.tianditu.cn/DataServer?T=cva_w&X={x}&Y={y}&L={z}"
         },
         Satellite: {
@@ -35,7 +35,7 @@ L.TileLayer.ChinaProvider.providers = {
 
     GaoDe: {
         Normal: {
-            Map: 'http://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}'
+            Map: 'https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}'
         },
         Satellite: {
             Map: 'http://webst0{s}.is.autonavi.com/appmaptile?style=6&x={x}&y={y}&z={z}',
