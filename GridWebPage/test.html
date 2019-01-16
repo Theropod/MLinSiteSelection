@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Display a map</title>
+		<meta
+			name="viewport"
+			content="initial-scale=1,maximum-scale=1,user-scalable=no"
+		/>
+		<!-- mapbox gl -->
+		<!-- <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css' rel='stylesheet' /> -->
+
+		<!-- leaflet and vectorgrid -->
+		<link
+			rel="stylesheet"
+			href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+			integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+			crossorigin=""
+		/>
+		<script
+			src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+			integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+			crossorigin=""
+    ></script>
+    <!-- <link rel="stylesheet" href="https://www.ovrdc.org/apps/assets/ovrdc-map-plugins-leaflet-v1.css" />
+    <script src="https://www.ovrdc.org/apps/assets/ovrdc-map-plugins-leaflet-v1.js"></script>v -->
+    <script src="https://www.ovrdc.org/apps/assets/cssjs/Leaflet.VectorGrid/Leaflet.VectorGrid.bundled.js"></script>
+
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+			}
+			#map {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="map"></div>
+		<script>
+			var map = L.map("map", { minZoom: 9, maxZoom: 18 }).setView(
+			  [39.90726389, 116.39111111],
+			  12
+      );
+      // var map = L.map("map", { minZoom: 9, maxZoom: 18 }).setView(
+			//   [38.8393, -82.9907],
+			//   12
+      // );
+			// mapboxgl.accessToken = 'pk.eyJ1IjoidGhlcm9wb2QiLCJhIjoiY2pxMTI3Y3g5MHQzYTQzc2J3MTlqYnJ3MyJ9.NN_GFA23GnubEtznlOjX1A';
+			// const map = new mapboxgl.Map({
+			//   container: 'map',
+			//   style: 'mapbox://styles/theropod/cjq14pgq30xoi2sp6y91pbc4x',
+			//   center: [116.568135, 39.867127],
+			//   zoom: 9.3
+      // });
+      map.createPane('parcelPane');
+      map.getPane('parcelPane').style.zIndex = 650;
+			// var vectorStyles = {
+			// 	"ss_grid_bejing_extracted": {
+			// 		fill: true,
+			// 		weight: 1,
+			// 		fillColor: "#06cccc",
+			// 		color: "#06cccc"
+			// 		// fillOpacity: 0.2,
+			// 		// opacity: 0.4
+			// 	}
+			// };
+			// var openMapTilesUrl =
+			// 	"http://62.234.212.250:8080/bj_ss_grid/{z}/{x}/{y}.pbf";
+			// var openMapTilesLayer = L.vectorGrid.protobuf(openMapTilesUrl, {
+      //   pane: "parcelPane",
+			// 	vectorTileLayerStyles: vectorStyles,
+			// 	attribution: "© OpenStreetMap contributors, © OpenMapTiles"
+      // });
+      
+      var openMapTilesLayer = L.vectorGrid
+				.protobuf(
+					"http://62.234.212.250:8080/bj_ss_grid/{z}/{x}/{y}.pbf",
+					{
+						pane: "parcelPane",
+						minZoom: 12,
+						maxNativeZoom: 17,
+						maxZoom: 22,
+						rendererFactory: L.canvas.tile,
+						attribution: "© OVRDC",
+						interactive: true,
+						getFeatureId: function(feature) {
+							return feature.properties.fnid;
+						},
+						vectorTileLayerStyles: {
+							"ss_grid_beijing_extracted": {
+								fillColor: "transparent",
+								color: "orange",
+								weight: 1,
+								fillOpacity: 0.3
+							}
+						}
+					}
+        );
+
+			var vectorTilePBFLayer = L.vectorGrid
+				.protobuf(
+					"https://b.tiles.mapbox.com/v4/ovrdc.9h65l843/{z}/{x}/{y}.vector.pbf?access_token=pk.eyJ1Ijoib3ZyZGMiLCJhIjoiY2pjbHpsNTNhMGxpOTJ3cm4xODE3bGpsaSJ9.YvQrP4s_CIuz365le0eMQg",
+					{
+						pane: "parcelPane",
+						minZoom: 12,
+						maxNativeZoom: 17,
+						maxZoom: 22,
+						rendererFactory: L.canvas.tile,
+						attribution: "© OVRDC",
+						interactive: true,
+						getFeatureId: function(feature) {
+							return feature.properties.geoid;
+						},
+						vectorTileLayerStyles: {
+							"sci-parcels-geojson-79v4aw": {
+								fillColor: "transparent",
+								color: "#06cccc",
+								weight: 1,
+								fillOpacity: 0.3
+							}
+						}
+					}
+        );
+        openMapTilesLayer.addTo(map);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [116.3630912, 39.95807776]
+      },
+      "properties": {
+        "conn_ID": "id_0",
+        "AREA_NAME": "西直门",
+        "AREA_TYPE_NAME": "商业街区",
+        "出账收入": "153491.932",
+        "fnid": "163113"
+      }
+    }
+  ]
+}

@@ -40,8 +40,8 @@ var grids,
 var subLayerParent = L.markerClusterGroup();
 var gridLayer = L.featureGroup.subGroup(subLayerParent);
 
-var rawGridLayer = omnivore.topojson(
-	"./data/csv2geojson/ss_grid_beijing_wgs84_merged.topo.json"
+var rawGridLayer = omnivore.geojson(
+	"./data/csv2geojson/ss_grid_bejing_extracted.geojson"
 );
 // Need Progress Bar or disable user interaction when zooming to level 9 and 10
 rawGridLayer.on("ready", function() {

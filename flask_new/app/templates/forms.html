@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Lumino - Forms</title>
+	<script src="/static/js/jquery-1.11.1.min.js"></script>
+	<script src="/static/js/bootstrap.min.js"></script>
+	<script src="/static/js/chart.min.js"></script>
+	<script src="/static/js/chart-data.js"></script>
+	<script src="/static/js/easypiechart.js"></script>
+	<script src="/static/js/easypiechart-data.js"></script>
+	<script src="/static/js/bootstrap-datepicker.js"></script>
+<link href="/static/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="/static/css/datepicker3.css" rel="stylesheet"/>
+<link href="/static/css/style.css" rel="stylesheet"/>
+
+<!--[if lt IE 9]>
+<script src="/static/js/html5shiv.js"></script>
+<script src="/static/js/respond.min.js"></script>
+
+<![endif]-->
+
+</head>
+
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#"><span>Lumino</span>Admin</a>
+			</div>
+							
+		</div><!-- /.container-fluid -->
+	</nav>
+
+
+	<div id="sidebar-collapse" class="col-sm-3 col-lg-3 sidebar col-sm-offset-9 col-lg-offset-9  ">
+
+		<div class="attribution">Template by <a href="http://www.medialoot.com/item/lumino-admin-bootstrap-template/">Medialoot</a></div>
+		<form role="form">
+			<div class="col-md-2">
+				<div class="form-group">
+									<label>Text Input</label>
+									<input class="form-control" placeholder="Placeholder"/>
+				</div>
+			</div>
+		</form>
+	</div><!--/.sidebar-->
+		
+	<div class="col-sm-8  col-lg-8  main">
+		<!--<div class="row">-->
+			<!--<ol class="breadcrumb">-->
+				<!--<li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>-->
+				<!--<li class="active">Forms</li>-->
+			<!--</ol>-->
+		<!--</div>&lt;!&ndash;/.row&ndash;&gt;-->
+
+		<!--<div class="row">-->
+			<!--<div class="col-lg-12">-->
+				<!--<h1 class="page-header">Forms</h1>-->
+			<!--</div>-->
+		<!--</div>&lt;!&ndash;/.row&ndash;&gt;-->
+
+
+		<!--<div class="row">-->
+			<!--<div class="col-lg-12">-->
+				<!--<div class="panel panel-default">-->
+					<!--<div class="panel-heading">Form Elements</div>-->
+					<!--<div class="panel-body">-->
+						<!--<form role="form">-->
+						<!--<div class="col-md-6">-->
+								<!--<div class="form-group">-->
+									<!--<label>Text Input</label>-->
+									<!--<input class="form-control" placeholder="Placeholder"/>-->
+								<!--</div>-->
+
+								<!--<div class="form-group">-->
+									<!--<label>Password</label>-->
+									<!--<input type="password" class="form-control"/>-->
+								<!--</div>-->
+
+								<!--<div class="form-group checkbox">-->
+								  <!--<label>-->
+								    <!--<input type="checkbox"/>Remember me</label>-->
+								<!--</div>-->
+
+								<!--<div class="form-group">-->
+									<!--<label>File input</label>-->
+									<!--<input type="file"/>-->
+									 <!--<p class="help-block">Example block-level help text here.</p>-->
+								<!--</div>-->
+
+								<!--<div class="form-group">-->
+									<!--<label>Text area</label>-->
+									<!--<textarea class="form-control" rows="3"></textarea>-->
+								<!--</div>-->
+
+								<!--<label>Validation</label>-->
+								<!--<div class="form-group has-success">-->
+									<!--<input class="form-control" placeholder="Success"/>-->
+								<!--</div>-->
+								<!--<div class="form-group has-warning">-->
+									<!--<input class="form-control" placeholder="Warning"/>-->
+								<!--</div>-->
+								<!--<div class="form-group has-error">-->
+									<!--<input class="form-control" placeholder="Error"/>-->
+								<!--</div>-->
+							<!--</div>-->
+							<!--<div class="col-md-6">-->
+
+								<!--<div class="form-group">-->
+									<!--<label>Checkboxes</label>-->
+									<!--<div class="checkbox">-->
+										<!--<label>-->
+											<!--<input type="checkbox" value=""/>Checkbox 1-->
+										<!--</label>-->
+									<!--</div>-->
+									<!--<div class="checkbox">-->
+										<!--<label>-->
+											<!--<input type="checkbox" value=""/>Checkbox 2-->
+										<!--</label>-->
+									<!--</div>-->
+									<!--<div class="checkbox">-->
+										<!--<label>-->
+											<!--<input type="checkbox" value=""/>Checkbox 3-->
+										<!--</label>-->
+									<!--</div>-->
+									<!--<div class="checkbox">-->
+										<!--<label>-->
+											<!--<input type="checkbox" value=""/>Checkbox 4-->
+										<!--</label>-->
+									<!--</div>-->
+								<!--</div>-->
+
+								<!--<div class="form-group">-->
+									<!--<label>Radio Buttons</label>-->
+									<!--<div class="radio">-->
+										<!--<label>-->
+											<!--<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="checked"/>Radio Button 1-->
+										<!--</label>-->
+									<!--</div>-->
+									<!--<div class="radio">-->
+										<!--<label>-->
+											<!--<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"/>Radio Button 2-->
+										<!--</label>-->
+									<!--</div>-->
+									<!--<div class="radio">-->
+										<!--<label>-->
+											<!--<input type="radio" name="optionsRadios" id="optionsRadios3" value="option3"/>Radio Button 3-->
+										<!--</label>-->
+									<!--</div>-->
+									<!--<div class="radio">-->
+										<!--<label>-->
+											<!--<input type="radio" name="optionsRadios" id="optionsRadios3" value="option3"/>Radio Button 4-->
+										<!--</label>-->
+									<!--</div>-->
+								<!--</div>-->
+
+								<!--<div class="form-group">-->
+									<!--<label>Selects</label>-->
+									<!--<select class="form-control">-->
+										<!--<option>Option 1</option>-->
+										<!--<option>Option 2</option>-->
+										<!--<option>Option 3</option>-->
+										<!--<option>Option 4</option>-->
+									<!--</select>-->
+								<!--</div>-->
+
+								<!--<div class="form-group">-->
+									<!--<label>Multiple Selects</label>-->
+									<!--<select multiple="multiple" class="form-control">-->
+										<!--<option>Option 1</option>-->
+										<!--<option>Option 2</option>-->
+										<!--<option>Option 3</option>-->
+										<!--<option>Option 4</option>-->
+									<!--</select>-->
+								<!--</div>-->
+
+								<!--<button type="submit" class="btn btn-primary">Submit Button</button>-->
+								<!--<button type="reset" class="btn btn-default">Reset Button</button>-->
+							<!--</div>-->
+						<!--</form>-->
+					<!--</div>-->
+				<!--</div>-->
+			<!--</div>&lt;!&ndash; /.col&ndash;&gt;-->
+		<!--</div>&lt;!&ndash; /.row &ndash;&gt;-->
+    <div id='map'></div>
+	</div><!--/.main-->
+
+	<!--<script>-->
+		<!--!function ($) {-->
+			<!--$(document).on("click","ul.nav li.parent > a > span.icon", function(){		  -->
+				<!--$(this).find('em:first').toggleClass("glyphicon-minus");	  -->
+			<!--}); -->
+			<!--$(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");-->
+		<!--}(window.jQuery);-->
+
+		<!--$(window).on('resize', function () {-->
+		  <!--if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')-->
+		<!--})-->
+		<!--$(window).on('resize', function () {-->
+		  <!--if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')-->
+		<!--})-->
+	<!--</script>	-->
+<footer class="footer">
+        ...页脚内容...
+        </footer>
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+GridWebPage/data/3道路-32道路/* filter=lfs diff=lfs merge=lfs -text
+GridWebPage/data/shp/* filter=lfs diff=lfs merge=lfs -text
+GridWebPage/data/csv2geojson/*.mbtiles filter=lfs diff=lfs merge=lfs -text
+GridWebPage/data/csv2geojson/*.geojson filter=lfs diff=lfs merge=lfs -text
+GridWebPage/data/csv2geojson/*.topo.json filter=lfs diff=lfs merge=lfs -text
+GridWebPage/data/city_impervious_extraction/** filter=lfs diff=lfs merge=lfs -text

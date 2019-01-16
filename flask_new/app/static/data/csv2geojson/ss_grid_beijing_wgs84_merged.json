@@ -1,0 +1,57 @@
+{
+	"type": "FeatureCollection",
+	"features": [
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Polygon",
+				"coordinates": [
+					[
+						[116.43094267, 39.44275803],
+						[116.43387155, 39.44275803],
+						[116.43387155, 39.44501159],
+						[116.43094267, 39.44501159],
+						[116.43094267, 39.44275803]
+					]
+				]
+			},
+			"properties": {
+				"fnid": "345",
+				"grow_4326": "1",
+				"gcol_4326": "345",
+				"city_code": "V0110000",
+				"bj_convenientstore": "",
+				"bj_dianping": "",
+				"bj_mall": "",
+				"bj_supermarket": "",
+				"bj_unicom_businesshall": ""
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Polygon",
+				"coordinates": [
+					[
+						[116.4280138, 39.44501159],
+						[116.43094267, 39.44501159],
+						[116.43094267, 39.44726515],
+						[116.4280138, 39.44726515],
+						[116.4280138, 39.44501159]
+					]
+				]
+			},
+			"properties": {
+				"fnid": "1058",
+				"grow_4326": "2",
+				"gcol_4326": "344",
+				"city_code": "V0110000",
+				"bj_convenientstore": "",
+				"bj_dianping": "",
+				"bj_mall": "",
+				"bj_supermarket": "",
+				"bj_unicom_businesshall": ""
+			}
+		}
+	]
+}
